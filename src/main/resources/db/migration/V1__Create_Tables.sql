@@ -1,0 +1,28 @@
+CREATE TABLE Chickpea_User (
+  id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  bio VARCHAR(1024),
+  image VARCHAR(255),
+  salted VARCHAR(255),
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL
+);
+
+
+CREATE TABLE Chickpea_SingleTask (
+  id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  username VARCHAR(255) NOT NULL,
+  title VARCHAR(300) NOT NULL,
+  description TEXT NOT NULL,
+
+  user_id BIGINT NOT NULL,
+
+  start_date TIMESTAMP NOT NULL,
+  end_date TIMESTAMP NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+
+  FOREIGN KEY (user_id) REFERENCES Chickpea_User(id) ON DELETE CASCADE ON UPDATE RESTRICT
+);
